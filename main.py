@@ -3,11 +3,16 @@ import os
 
 app = Flask(__name__)
 
-PORT = int(os.environ.get("PORT", 5000))
-
-@app.route("/", methods=["GET"])
+@app.route('/', methods=['GET'])
 def home():
-    return "Hello, cogmem-api is running!"
+    return "🤖 CogMem Assistant is running!", 200
 
-if name == "__main__":
-    app.run(host="0.0.0.0", port=PORT)
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    data = request.json
+    print("🔔 Получен вебхук:", data)
+    return "ok", 200
+
+if name == '__main__':
+    port = int(os.environ.get('PORT', 10000))
+    app.run(host='0.0.0.0', port=port)
