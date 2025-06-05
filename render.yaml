@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: cogmem-api
+    env: python
+    plan: free
+    branch: main
+    buildCommand: ""
+    startCommand: python main.py
+    envVars:
+      - key: PORT
+        value: "10000"
+        
